@@ -61,10 +61,10 @@ python3 spicetify-gui.py
 </p>
 
 <ul> 
-  <li><a href="">Spicetify Website</a></li>
-  <li><a href="">Github</a></li>
-  <li><a href="">Docs</a></li>
-  <li><a href="">Blog</a></li>
+  <li><a href="https://spicetify.app">Spicetify Website</a></li>
+  <li><a href="https://github.com/spicetify/spicetify-cli">Github</a></li>
+  <li><a href="https://spicetify.app/docs/getting-started">Docs</a></li>
+  <li><a href="https://spicetify.app/blog">Blog</a></li>
 </ul>
 
 <h3>License</h3>
