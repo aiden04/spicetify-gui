@@ -30,7 +30,7 @@
   The installation for Spicetify-GUI is very easy and straight foward. All you have to do its open a windows terminal wherever you'd like to install Spicetify-GUI at, then enter the commands below: 
 </p>
 
-```
+```bash
 git clone https://github.com/aiden04/spicetify-gui.git
 cd spicetify-gui
 pip install -r requiurements.txt
