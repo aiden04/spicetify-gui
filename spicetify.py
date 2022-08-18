@@ -4,8 +4,8 @@ import os
 
 #local Variables
 user = sp.getoutput('echo %username%')
-theme_dir = sp.getoutput('dir C:\Users\{}\AppData\local\spicetify\themes'.format(user)')
-print(theme_dir)
+theme_dir = sp.getoutput(r'dir C:\Users\{}\AppData\local\spicetify\themes'.format(user))
+ext_dir = sp.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\extensions'.format(user))
 
 #Themes Window
 def Themes():
@@ -36,12 +36,37 @@ def Themes():
             return
     window.close()
 
+def Extensions():
+    layout = [
+        [sg.T('Extensions:')],
+        [sg.T(ext_dir)],
+        [sg.T('Extension Name:'), sg.In(key='ext')],
+        [sg.B('Add'), sg.B('Remove'), sg.B('Back')]
+    ]
+    window = sg.Window('Extensions', layout, modal=False)
+    while True:
+        event, values = window.read()
+        if event == 'Add':
+            ext_name = (values['ext'])
+            os.system('spicetify config extensions {}'.format(ext_name))
+            sg.popup('Extension Added')
+        if event == 'Remove':
+            ext_name = (values['ext'])
+            os.system('spicetify config extensions {}-'.format(ext_name))
+            sg.popup('Extension Removed')
+        if event == 'Back':
+            window.hide()
+            main()
+        if event == sg.WIN_CLOSED:
+            return 
+    window.close()
+
 def main():
     f = open(r'C:/Users/{}/AppData/Roaming/spicetify/config-xpui.ini'.format(user))
     config = f.read()
     layout = [
         [sg.T('Welcome to Spicetify!')],
-        [sg.B('Config'), sg.B('Themes'), sg.B('Exit')]
+        [sg.B('Config'), sg.B('Themes'), sg.B('Extensions'), sg.B('Apply'), sg.B('Exit')]
     ]
     window = sg.Window('Spicetify', layout, modal=False)
     while True:
@@ -51,6 +76,11 @@ def main():
         if event == 'Themes':
             window.hide()
             Themes()
+        if event == 'Extensions':
+            window.hide()
+            Extensions()
+        if event == 'Apply':
+            os.system('spicetify apply')
         if event == 'Exit':
             return
         if event == sg.WIN_CLOSED:
