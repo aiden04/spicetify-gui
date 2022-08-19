@@ -43,13 +43,13 @@ python3 spicetify-gui.py
 <h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522287-ce9a984f-0206-43c3-8b82-4eef3034c949.png"></h3>
 
 <h3 align ="center">Apps</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185504700-d9840803-ae39-4530-8cb0-4558257f0994.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522408-819b1a39-a731-4573-96ed-63ce8dcf7d12.png"></h3>
 
 <h3 align="center">Themes</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185505440-835d6f0c-e6d6-4f5a-a91b-ce50df374643.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522483-5ae9ac89-d524-4f58-bccd-1f946c433cdd.png"></h3>
 
 <h3 align="center">Extensions</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185505582-24844897-dfa3-4b0a-a53d-d65f0f07280c.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522527-8574a1ed-e73f-4d68-a0e2-f3f699e9160d.png"></h3>
 
 <h1 align="center">More about Spicetify-CLI</h1>
 
