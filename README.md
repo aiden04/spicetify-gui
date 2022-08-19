@@ -33,7 +33,7 @@
 ```bash
 git clone https://github.com/aiden04/spicetify-gui.git
 cd spicetify-gui
-pip install -r requiurements.txt
+pip install -r requirements.txt
 python3 spicetify-gui.py
 ```
 
