@@ -40,10 +40,7 @@ python3 spicetify-gui.py
 <h1 align="center">Media</h1>
 
 <h3 align="center">Main Menu</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185504159-0cb0db6c-6587-494d-8fad-df8365a80d70.png"></h3>
-
-<h3 align="center">Config</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185504544-b25b086a-5e2a-4020-8082-a99280d71621.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522287-ce9a984f-0206-43c3-8b82-4eef3034c949.png"></h3>
 
 <h3 align ="center">Apps</h3>
 <h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185504700-d9840803-ae39-4530-8cb0-4558257f0994.png"></h3>
