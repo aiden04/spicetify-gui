@@ -27,15 +27,27 @@
 <h1 align="center">Installation</h1>
 
 <p>
-  The installation for Spicetify-GUI is very easy and straight foward. All you have to do its open a windows terminal wherever you'd like to install Spicetify-GUI at, then enter the commands below: 
+  The installation for Spicetify-GUI is very easy and straight foward. There are two methods, these methods are automatic or manual.
+</p>
+
+<h3>Automatic</h3>
+
+The automatic way is as easy as downloading the releases and launching the `Installer.bat`. This will update pip, then install the requirements, and finally create an executable. The executable can be found in the `Spicetify-GUI` directory. To make the executable work you'll need to move it to the root directory. Once that is done, you can choose to move the root folder to where you want, then create a shortcute on the desktop.
+
+<h3>Manual</h3>
+
+<p>
+Open a command prompt and paste this code into the console:
 </p>
 
 ```bash
 git clone https://github.com/aiden04/spicetify-gui.git
 cd spicetify-gui
 pip install -r requirements.txt
-python3 spicetify.pyw
+pyinstaller --onefile --windowed --name Spicetify-GUI --noupx -i "src/spicetify-logo.ico" --distpath "spicetify-gui" "spicetify.pyw" --clean
 ```
+
+This will install the requirements, and create an executable. The executable can be found in the `Spicetify-GUI` directory. To make the executable work you'll need to move it to the root directory. Once that is done, you can choose to move the root folder to where you want, then create a shortcute on the desktop.
 
 <h1 align="center">Features</h1>
 <p>
