@@ -37,10 +37,25 @@ pip install -r requirements.txt
 python3 spicetify-gui.py
 ```
 
+<h1 align="center">Features</h1>
+<p>
+Spicetify offers many features like oneclick easyinstall for <a href="https://spicetify.app">Spicetify-CLI</a>, <a href="https://spotify.com">Spotify</a>, and many more!.
+</p>
+
+<ul>
+  <li>Easy edit to <a href="https://spicetify.app">Spicetify-CLI</a> config file</li>
+  <li>Simple way to change theme</li>
+  <li>Simple way to add Extensions</i>
+  <li>Simple way to add Apps</li>
+  <li>Built in Command Line Interface for quick debugging and <a href="https://spicetify.app">Spicetify-CLI</a> settings</li>
+  <li>Easy Install <a href="https://spicetify.app>Spicetify-CLI</a></li>
+  <li>Easy Install <a href="https://spotify.com">Spotify</a></li>
+</ul>
+
 <h1 align="center">Media</h1>
 
 <h3 align="center">Main Menu</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185734860-42c08d77-7431-40be-899b-c00a2dbf441a.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185735748-ef7bf67a-716e-469c-9182-96cdd8ad9b65.png"></h3>
 
 <h3 align ="center">Apps</h3>
 <h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522408-819b1a39-a731-4573-96ed-63ce8dcf7d12.png"></h3>
