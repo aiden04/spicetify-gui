@@ -197,7 +197,7 @@ def main():
             sg.popup('Spicetify has been installed!',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Install Spotify':
-            spotify_install = subprocess.getoutput('cmd /c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "src\Spotify.ps1"')
+            spotify_install = subprocess.getoutput('powershell winget install Spotify.Spotify')
             print(spotify_install)
             print('Spotify Installed')
             sg.popup('Spotify Installed',
