@@ -2,6 +2,8 @@ import PySimpleGUI as sg
 import subprocess
 import os
 import sys
+import multiprocessing
+import joblib
 
 #GUI Theme
 sg.theme('SystemDefaultForReal')
@@ -55,22 +57,23 @@ def Themes():
             os.system('spicetify config current_theme {}'.format(current_theme))
             os.system('spicetify config color_scheme {}'.format(color_scheme))
             sg.popup('Theme/Color Scheme Applied',
-                     icon=r'src\spicetify-logo.ico',
-                     ttk_theme=ttk_style)
+                     icon=r'src\spicetify-logo.ico')
         if event == 'View Color Scheme':
-            color_scheme = (values['color_scheme'])
             current_theme = (values['theme_name'])
-            f = open('C:/Users/{}/AppData/Local/spicetify/Themes/{}'.format(user, current_theme))
-            color = f.read()
-            sg.popup_scrolled(color,
-                              icon=r'src\spicetify-logo.ico',
-                              ttk_theme=ttk_style)
+            if current_theme == '':
+                sg.popup('Theme input empty')
+            else:
+                f = open('C:/Users/{}/AppData/Local/spicetify/Themes/{}/color.ini'.format(user, current_theme))
+                color = f.read()
+                sg.popup_scrolled(color,
+                                  icon=r'src\spicetify-logo.ico')
+                window.hide()
+                Themes()
         if event == 'Back':
             window.hide()
             main()
         if event == sg.WIN_CLOSED:
-            exit()
-            break
+            sys.exit()
     window.close()
 
 #Extensions Window
@@ -104,8 +107,7 @@ def Extensions():
             window.hide()
             main()
         if event == sg.WIN_CLOSED:
-            exit()
-            break 
+            sys.exit() 
     window.close()
 
 #Apps Window
@@ -139,8 +141,7 @@ def Apps():
             window.hide()
             main()
         if event == sg.WIN_CLOSED:
-            exit()
-            break
+            sys.exit()
     window.close()
 
 #Main Menu
@@ -197,19 +198,17 @@ def main():
             sg.popup('Spicetify has been installed!',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Install Spotify':
-            spotify_install = subprocess.getoutput('powershell winget install Spotify.Spotify')
+            spotify_install = subprocess.getoutput('cmd /c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "src\Spotify.ps1"')
             print(spotify_install)
             print('Spotify Installed')
             sg.popup('Spotify Installed',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Exit':
-            exit()
-            break
+            sys.exit()
         if event == 'Send Command':
             runCommand(cmd=values['_IN_'], window=window)
         if event == sg.WIN_CLOSED:
-            exit()
-            break
+            sys.exit()
     window.close()
 
 main()
