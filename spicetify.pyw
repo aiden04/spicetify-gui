@@ -1,21 +1,34 @@
 import PySimpleGUI as sg
-import subprocess as sp
+import subprocess
 import os
+import sys
 
 #GUI Theme
 sg.theme('SystemDefaultForReal')
 ttk_style = 'clam'
 
 #Local Variables
-user = sp.getoutput('echo %username%')
-theme_dir = sp.getoutput(r'dir C:\Users\{}\AppData\local\spicetify\Themes'.format(user))
-ext_dir = sp.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\Extensions'.format(user))
-apps_dir = sp.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\CustomApps'.format(user))
+user = subprocess.getoutput('echo %username%')
+theme_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\local\spicetify\Themes'.format(user))
+ext_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\Extensions'.format(user))
+apps_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\CustomApps'.format(user))
 
-actv_ext = sp.getoutput('spicetify config extensions')
-actv_apps = sp.getoutput('spicetify config custom_apps')
-actv_theme = sp.getoutput('spicetify config current_theme')
-actv_color = sp.getoutput('spicetify config color_scheme')
+actv_ext = subprocess.getoutput('spicetify config extensions')
+actv_apps = subprocess.getoutput('spicetify config custom_apps')
+actv_theme = subprocess.getoutput('spicetify config current_theme')
+actv_color = subprocess.getoutput('spicetify config color_scheme')
+
+#Run console commands
+def runCommand(cmd, timeout=None, window=None):
+    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    output = ''
+    for line in p.stdout:
+        line = line.decode(errors='replace' if (sys.version_info) < (3, 5) else 'backslashreplace').rstrip()
+        output += line
+        print(line)
+        window.Refresh() if window else None
+        retval = p.wait(timeout)
+    return (retval, output)                         
 
 #Themes Window
 def Themes():
@@ -56,9 +69,11 @@ def Themes():
             window.hide()
             main()
         if event == sg.WIN_CLOSED:
-            return
+            exit()
+            break
     window.close()
 
+#Extensions Window
 def Extensions():
     layout = [
         [sg.T('Extensions:')],
@@ -89,9 +104,11 @@ def Extensions():
             window.hide()
             main()
         if event == sg.WIN_CLOSED:
-            return 
+            exit()
+            break 
     window.close()
 
+#Apps Window
 def Apps():
     layout = [
         [sg.T('Apps:')],
@@ -124,24 +141,29 @@ def Apps():
             window.hide()
             main()
         if event == sg.WIN_CLOSED:
-            return
+            exit()
+            break
     window.close()
 
+#Main Menu
 def main():
     f = open(r'C:/Users/{}/AppData/Roaming/spicetify/config-xpui.ini'.format(user))
     config = f.read()
     layout = [
         [sg.Im('src/spicetify-full.png')],
+        [sg.T('Spicetify Config File:')],
         [sg.Multiline(config, size=(82, 10))],
         [sg.B('Apps'), sg.B('Themes'), sg.B('Extensions'), sg.B('Apply'), sg.B('Backup'), sg.B('Restore'), sg.Button('Install CLI'), sg.B('Exit')],
-        [sg.T('Console Input: '), sg.In(key='command', size=(52)),sg.B('Send Command')]
+        [sg.T('Console Input: '), sg.In(key='_IN_', size=(52)),sg.B('Send Command')],
+        [sg.Output(size=(82,5))],
     ]
     window = sg.Window('Spicetify', 
                         layout, 
                         modal=False,
                         icon=r'src\spicetify-logo.ico',
                         use_ttk_buttons=True,
-                        ttk_theme=ttk_style).Finalize()
+                        ttk_theme=ttk_style
+                        )
     while True:
         event, values = window.read()
         if event == 'Apps':
@@ -166,15 +188,16 @@ def main():
             sg.popup('Spotify Restored!',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Install CLI':
-            sp.run("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex", shell=True ,capture_output=True,text=True)
-            sp.run("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex", shell=True ,capture_output=True,text=True)
+            subprocess.run("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex", shell=True ,capture_output=True,text=True)
+            subprocess.run("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex", shell=True ,capture_output=True,text=True)
         if event == 'Exit':
-            return
+            exit()
+            break
         if event == 'Send Command':
-            command = (values['command'])
-            os.system(command)
+            runCommand(cmd=values['_IN_'], window=window)
         if event == sg.WIN_CLOSED:
-            return
+            exit()
+            break
     window.close()
 
 main()
