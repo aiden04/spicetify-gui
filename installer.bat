@@ -86,7 +86,29 @@ echo %ESC%[32mExecutable Created!%ESC%[0m
 echo.
 echo %ESC%[32m#####################################%ESC%[0m
 timeout /t 3 > null
-goto completed
+goto clean_up
+
+:clean_up
+cls
+echo %ESC%[94m#####################################%ESC%[0m
+echo.
+echo %ESC%[94mCleaning Up%ESC%[0m
+echo.
+echo %ESC%[94m#####################################%ESC%[0m
+echo.
+move spicetify-gui\spicetify-gui.exe .\spicetify-gui.exe
+RMDIR /Q/S build
+timeout /t 1 >null
+RMDIR /Q/S spicetify-gui
+timeout /t 1 >null
+del /f Spicetify-GUI.spec
+timeout /t 1 >null
+echo %ESC%[32m#####################################%ESC%[0m
+echo.
+echo %ESC%[32mDirectory cleaned up!%ESC%[0m
+echo.
+echo %ESC%[32m#####################################%ESC%[0m
+timeout /t 3 > null
 
 :completed
 cls
