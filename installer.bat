@@ -59,6 +59,7 @@ goto requirements
 
 :requirements
 cls
+echo.
 echo %ESC%[94m#####################################%ESC%[0m
 echo.
 echo %ESC%[94m [+] Installing Pip Requirements%ESC%[0m
@@ -80,6 +81,7 @@ goto PyInstaller
 
 :PyInstaller
 cls
+echo.
 echo %ESC%[94m#####################################%ESC%[0m
 echo.
 echo %ESC%[94m [+] Creating Executable with PySintaller%ESC%[0m
@@ -101,6 +103,7 @@ goto clean_up
 
 :clean_up
 cls
+echo.
 echo %ESC%[94m#####################################%ESC%[0m
 echo.
 echo %ESC%[94m [+] Cleaning Up%ESC%[0m
@@ -128,6 +131,7 @@ timeout /t 3 > null
 
 :completed
 cls
+echo.
 echo %ESC%[32m#####################################%ESC%[0m
 echo.
 echo %ESC%[32m [+]Installation Completed!%ESC%[0m
