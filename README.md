@@ -34,7 +34,7 @@
 git clone https://github.com/aiden04/spicetify-gui.git
 cd spicetify-gui
 pip install -r requirements.txt
-python3 spicetify-gui.py
+python3 spicetify-gui.pyw
 ```
 
 <h1 align="center">Features</h1>
