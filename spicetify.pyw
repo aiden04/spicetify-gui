@@ -129,14 +129,12 @@ def Apps():
             app = (values['app_name'])
             os.system('spicetify config custom_apps {}'.format(app))
             sg.popup('App Added',
-                     icon=r'src\spicetify-logo.ico',
-                     ttk_theme=ttk_style)
+                     icon=r'src\spicetify-logo.ico')
         if event == 'Remove':
             app = (values['app_name'])
             os.system('spicetify config custom_apps {}-'.format(app))
             sg.popup('App Removed',
-                     icon=r'src\spicetify-logo.ico',
-                     ttk_theme=ttk_style)
+                     icon=r'src\spicetify-logo.ico')
         if event == 'Back':
             window.hide()
             main()
@@ -152,10 +150,10 @@ def main():
     layout = [
         [sg.Im('src/spicetify-full.png')],
         [sg.T('Spicetify Config File:')],
-        [sg.Multiline(config, size=(82, 10))],
-        [sg.B('Apps'), sg.B('Themes'), sg.B('Extensions'), sg.B('Apply'), sg.B('Backup'), sg.B('Restore'), sg.Button('Install CLI'), sg.B('Exit')],
-        [sg.T('Console Input: '), sg.In(key='_IN_', size=(52)),sg.B('Send Command')],
-        [sg.Output(size=(82,5))],
+        [sg.Multiline(config, size=(90, 10))],
+        [sg.B('Apps'), sg.B('Themes'), sg.B('Extensions'), sg.B('Apply'), sg.B('Backup'), sg.B('Restore'), sg.Button('Install CLI'), sg.B('Install Spotify'), sg.B('Exit')],
+        [sg.T('Console Input:'), sg.In(key='_IN_', size=(61)),sg.B('Send Command')],
+        [sg.Output(size=(90,5))],
     ]
     window = sg.Window('Spicetify', 
                         layout, 
@@ -176,20 +174,34 @@ def main():
             window.hide()
             Extensions()
         if event == 'Apply':
-            os.system('spicetify apply')
+            apply = subprocess.getoutput('spicetify apply')
+            print(apply)
             sg.popup('Spicetify Config Applied!',
                      icon=r'src\spicetify-logo.ico',)
         if event == 'Backup':
-            os.system('spicetify backup')
+            backup = subprocess.getoutput('spicetify backup')
+            print(backup)
             sg.popup('Spicetify Backed Up!',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Restore':
-            os.system('spicetify restore')
+            restore = subprocess.getoutput('spicetify restore')
+            print(restore)
             sg.popup('Spotify Restored!',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Install CLI':
-            subprocess.run("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-cli/master/install.ps1 | iex", shell=True ,capture_output=True,text=True)
-            subprocess.run("iwr -useb https://raw.githubusercontent.com/spicetify/spicetify-marketplace/main/resources/install.ps1 | iex", shell=True ,capture_output=True,text=True)
+            install = subprocess.getoutput('cmd /c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "src/install.ps1"')
+            market = subprocess.getoutput('cmd /c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "src/market-install.ps1"')
+            print(install)
+            print(market)
+            print('Spicetify Installed')
+            sg.popup('Spicetify has been installed!',
+                     icon=r'src\spicetify-logo.ico')
+        if event == 'Install Spotify':
+            spotify_install = subprocess.getoutput('cmd /c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "src\Spotify.ps1"')
+            print(spotify_install)
+            print('Spotify Installed')
+            sg.popup('Spotify Installed',
+                     icon=r'src\spicetify-logo.ico')
         if event == 'Exit':
             exit()
             break
