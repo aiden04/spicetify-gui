@@ -14,14 +14,13 @@
 <h1 align="center">Requirements</h1>
 
 <p>
-  This software requires four other software in order to run, these are:
+  This software requires three other software in order to run, these are:
 </p>
 
 <ul>
   <li><a href="https://python.org">Python 3.0</a></li>
   <li><a href="https://spicetify.app">Spicetify-CLI</a></li>
   <li><a href="https://spotify.com">Spotify</a></li>
-  <li><a href="https://git-scm.com/">Git</a></li>
 </ul>
 
 <h1 align="center">Installation</h1>
@@ -32,7 +31,7 @@
 
 <h3>Automatic</h3>
 
-The automatic way is as easy as downloading the releases and launching the `Installer.bat`. This will update pip, then install the requirements, and finally create an executable. The executable can be found in the `Spicetify-GUI` directory. To make the executable work you'll need to move it to the root directory. Once that is done, you can choose to move the root folder to where you want, then create a shortcute on the desktop.
+The automatic way is as easy as downloading the releases and launching the `Installer.bat`. This will update pip, then install the requirements, and finally create an executable. You can choose to move the root folder to where you want, then create a shortcute on the desktop.
 
 <h3>Manual</h3>
 
@@ -45,9 +44,12 @@ git clone https://github.com/aiden04/spicetify-gui.git
 cd spicetify-gui
 pip install -r requirements.txt
 pyinstaller --onefile --windowed --name Spicetify-GUI --noupx -i "src/spicetify-logo.ico" --distpath "spicetify-gui" "spicetify.pyw" --clean
+RMDIR /Q/S build
+RMDIR /Q/S spicetify-gui
+del /f Spicetify-GUI.spec
 ```
 
-This will install the requirements, and create an executable. The executable can be found in the `Spicetify-GUI` directory. To make the executable work you'll need to move it to the root directory. Once that is done, you can choose to move the root folder to where you want, then create a shortcute on the desktop.
+This will install the requirements, and create an executable. You can choose to move the root folder to where you want, then create a shortcute on the desktop.
 
 <h1 align="center">Features</h1>
 <p>
