@@ -55,10 +55,17 @@ def Themes():
         if event == 'Set':
             current_theme = (values['theme_name'])
             color_scheme = (values['color_scheme'])
-            os.system('spicetify config current_theme {}'.format(current_theme))
-            os.system('spicetify config color_scheme {}'.format(color_scheme))
-            sg.popup('Theme/Color Scheme Applied',
-                     icon=r'src\spicetify-logo.ico')
+            if current_theme == '':
+                sg.popup('Please enter both theme name, and color scheme',
+                        icon=r'src\spicetify-logo.ico')
+            if color_scheme == '':
+                sg.popup('Please enter both theme name, and color scheme',
+                        icon=r'src\spicetify-logo.ico')
+            else:
+                os.system('spicetify config current_theme {}'.format(current_theme))
+                os.system('spicetify config color_scheme {}'.format(color_scheme))
+                sg.popup('Theme/Color Scheme Applied',
+                        icon=r'src\spicetify-logo.ico')
         if event == 'View Color Scheme':
             current_theme = (values['theme_name'])
             if current_theme == '':
@@ -96,14 +103,22 @@ def Extensions():
         event, values = window.read()
         if event == 'Add':
             ext_name = (values['ext'])
-            os.system('spicetify config extensions {}'.format(ext_name))
-            sg.popup('Extension Added',
-                     icon=r'src\spicetify-logo.ico')
+            if ext_name == '':
+                sg.popup('Please enter extension name.',
+                        icon=r'src\spicetify-logo.ico')
+            else:
+                os.system('spicetify config extensions {}'.format(ext_name))
+                sg.popup('Extension Added',
+                        icon=r'src\spicetify-logo.ico')
         if event == 'Remove':
             ext_name = (values['ext'])
-            os.system('spicetify config extensions {}-'.format(ext_name))
-            sg.popup('Extension Removed',
-                     icon=r'src\spicetify-logo.ico')
+            if ext_name == '':
+                sg.popup('Please enter extension name.',
+                        icon=r'src\spicetify-logo.ico')
+            else:
+                os.system('spicetify config extensions {}-'.format(ext_name))
+                sg.popup('Extension Removed',
+                        icon=r'src\spicetify-logo.ico')
         if event == 'Back':
             window.hide()
             main()
@@ -130,13 +145,21 @@ def Apps():
         event, values = window.read()
         if event == 'Add':
             app = (values['app_name'])
-            os.system('spicetify config custom_apps {}'.format(app))
-            sg.popup('App Added',
-                     icon=r'src\spicetify-logo.ico')
+            if app == '':
+                sg.popup('Please enter app name.',
+                        icon=r'src\spicetify-logo.ico')
+            else:
+                os.system('spicetify config custom_apps {}'.format(app))
+                sg.popup('App Added',
+                        icon=r'src\spicetify-logo.ico')
         if event == 'Remove':
             app = (values['app_name'])
-            os.system('spicetify config custom_apps {}-'.format(app))
-            sg.popup('App Removed',
+            if app == '':
+                sg.popup('Please enter app name.',
+                        icon=r'src\spicetify-logo.ico')
+            else:
+                os.system('spicetify config custom_apps {}-'.format(app))
+                sg.popup('App Removed',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Back':
             window.hide()
