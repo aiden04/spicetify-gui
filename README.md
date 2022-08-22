@@ -39,7 +39,7 @@ The automatic way is as easy as downloading the releases and launching the `Inst
 Open a command prompt and paste this code into the console:
 </p>
 
-```bash
+```python
 git clone https://github.com/aiden04/spicetify-gui.git
 cd spicetify-gui
 pip install -r requirements.txt
