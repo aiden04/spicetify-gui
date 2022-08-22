@@ -47,6 +47,8 @@ pyinstaller --onefile --windowed --name Spicetify-GUI --noupx -i "src/spicetify-
 RMDIR /Q/S build
 RMDIR /Q/S spicetify-gui
 del /f Spicetify-GUI.spec
+powershell -ExecutionPolicy Bypass -File "src/install.ps1"
+powershell -ExecutionPolicy Bypass -File "src/market-install.ps1"
 ```
 
 This will install the requirements, and create an executable. You can choose to move the root folder to where you want, then create a shortcute on the desktop.
