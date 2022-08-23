@@ -112,22 +112,50 @@ echo %ESC%[94m#####################################%ESC%[0m
 echo.
 echo %ESC%[94m [-] move spicetify-gui\spicetify-gui.exe .\spicetify-gui.exe[0m
 move spicetify-gui\spicetify-gui.exe .\spicetify-gui.exe
-echo %ESC%[94m [-] RMDIR /Q/S build
+echo %ESC%[94m [-] RMDIR /Q/S build%ESC%[0m
 RMDIR /Q/S build
 timeout /t 1 >null
-echo %ESC%[94m [-] RMDIR /Q/S spicetify-gui
+echo %ESC%[94m [-] RMDIR /Q/S spicetify-gui%ESC%[0m
 RMDIR /Q/S spicetify-gui
 timeout /t 1 >null
-echo %ESC%[94m [-] del /f Spicetify-GUI.spec
+echo %ESC%[94m [-] del /f Spicetify-GUI.spec%ESC%[0m
 timeout /t 3 >null
 echo.
 del /f Spicetify-GUI.spec
 echo %ESC%[32m#####################################%ESC%
 echo.
-echo %ESC%[32m [+] Directory cleaned up!%ESC%
+echo %ESC%[32m [+] Directory cleaned up!%ESC%[0m
 echo.
 echo %ESC%[32m#####################################%ESC%
 timeout /t 3 > null
+goto install-cli
+
+:install-cli
+cls
+echo.
+echo %ESC%[94m#####################################%ESC%[0m
+echo.
+echo %ESC%[94m [+] Installing Spicetify%ESC%[0m
+echo.
+echo %ESC%[94m#####################################%ESC%[0m
+echo.
+echo %ESC%[94m [-] Installing CLI%ESC%[0m
+echo.
+powershell -ExecutionPolicy Bypass -File "src/install.ps1"
+timeout /t 4
+echo.
+echo %ESC%[94m [-] Installing Marketplace[0m
+echo.
+powershell -ExecutionPolicy Bypass -File "src/market-install.ps1"
+echo.
+timeout /t 3 > null
+echo %ESC%[32m#####################################%ESC%
+echo.
+echo %ESC%[32m [+] Spicetify Installed!%ESC%[0m
+echo.
+echo %ESC%[32m#####################################%ESC%
+timeout /t 3 > null
+goto completed
 
 :completed
 cls
@@ -138,8 +166,11 @@ echo %ESC%[32m [+]Installation Completed!%ESC%[0m
 echo.
 echo %ESC%[32m#####################################%ESC%[0m
 echo.
-echo %ESC%[32m [-]Press any key to exit. . .%ESC%[0m
+echo %ESC%[32m [-]Installation has completed%ESC%[0m
+echo.
+echo %ESC%[32mPress any key to exit. . .
 pause > null
+
 
 
 :setESC
