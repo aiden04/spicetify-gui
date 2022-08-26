@@ -1,2 +1,2 @@
-PySimpleGUI
-pyinstaller
+PySimpleGUI==4.60.1
+pyinstaller==5.0.1
