@@ -71,16 +71,16 @@ Spicetify offers many features like oneclick easyinstall for <a href="https://sp
 <h1 align="center">Media</h1>
 
 <h3 align="center">Main Menu</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185735748-ef7bf67a-716e-469c-9182-96cdd8ad9b65.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/186846306-fdc1278b-f65f-4074-ac38-52cae2a19afa.png"></h3>
 
 <h3 align ="center">Apps</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522408-819b1a39-a731-4573-96ed-63ce8dcf7d12.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/186846373-7978dbdc-c2a0-4762-8030-2da2da0c8ecb.png"></h3>
 
 <h3 align="center">Themes</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522483-5ae9ac89-d524-4f58-bccd-1f946c433cdd.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/186846458-700e1c28-4307-4f25-8f2f-3ce96a656046.png"></h3>
 
 <h3 align="center">Extensions</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/185522527-8574a1ed-e73f-4d68-a0e2-f3f699e9160d.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/186846547-c05f57b0-cf19-4078-888b-f863855459db.png"></h3>
 
 <h1 align="center">More about Spicetify-CLI</h1>
 
