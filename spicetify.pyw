@@ -4,22 +4,40 @@ import subprocess
 import os
 import sys
 import multiprocessing
-import joblib
 
 #GUI Theme
 sg.theme('SystemDefaultForReal')
 ttk_style = 'clam'
 
 #Local Variables
-user = subprocess.getoutput('echo %username%') #Defines the users directory name
-theme_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\local\spicetify\Themes'.format(user)) #Defines the Spicetify Themes directory
-ext_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\Extensions'.format(user)) #Defines the Spicetify Extensions directory
-apps_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\CustomApps'.format(user)) #Defines the Spicetify Apps directory
+user = subprocess.getoutput('echo %username%')
+actv_ext = subprocess.getoutput('spicetify config extensions')
+actv_apps = subprocess.getoutput('spicetify config custom_apps')
+actv_theme = subprocess.getoutput('spicetify config current_theme')
+actv_color = subprocess.getoutput('spicetify config color_scheme')
 
-actv_ext = subprocess.getoutput('spicetify config extensions') #Defines a list of active Extensions 
-actv_apps = subprocess.getoutput('spicetify config custom_apps') #Defines a list of active Apps
-actv_theme = subprocess.getoutput('spicetify config current_theme') #Defines the current Theme
-actv_color = subprocess.getoutput('spicetify config color_scheme') #Defines the current Color Scheme
+#Writing Directories to text files
+os.system(r'dir C:\Users\{}\AppData\local\spicetify\Themes > src\theme_dir.txt'.format(user))
+os.system(r'dir C:\Users\{}\AppData\local\spicetify\Extensions > src\ext_dir.txt'.format(user))
+os.system(r'dir C:\Users\{}\AppData\Local\spicetify\CustomApps > src\apps_dir.txt'.format(user))
+
+#Cleaning text files
+lines = []
+with open(r"src\theme_dir.txt", 'r+') as fp:
+    lines = fp.readlines()
+    fp.seek(0)
+    fp.truncate()
+    fp.writelines(lines[7:-2])
+with open(r"src\ext_dir.txt", 'r+') as fp:
+    lines = fp.readlines()
+    fp.seek(0)
+    fp.truncate()
+    fp.writelines(lines[7:-2])
+with open(r"src\apps_dir.txt", 'r+') as fp:
+    lines = fp.readlines()
+    fp.seek(0)
+    fp.truncate()
+    fp.writelines(lines[7:-2])
 
 #Run console commands
 def runCommand(cmd, timeout=None, window=None):
@@ -35,8 +53,20 @@ def runCommand(cmd, timeout=None, window=None):
 
 #Themes Window
 def Themes():
+    f = open(r'src\theme_dir.txt')
+    theme_dir = f.read()
     layout = [
-        [sg.T('Themes: ')],
+        [sg.T('''
+███████████████████████████████████████████████████
+█─▄▄▄▄█▄─▄▄─█▄─▄█─▄▄▄─█▄─▄▄─█─▄─▄─█▄─▄█▄─▄▄─█▄─█─▄█
+█▄▄▄▄─██─▄▄▄██─██─███▀██─▄█▀███─████─███─▄████▄─▄██
+▀▄▄▄▄▄▀▄▄▄▀▀▀▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▀▄▄▄▀▀▄▄▄▀▄▄▄▀▀▀▀▄▄▄▀▀
+
+                █████████████████████████████████████
+                █─▄─▄─█─█─█▄─▄▄─█▄─▀█▀─▄█▄─▄▄─█─▄▄▄▄█
+                ███─███─▄─██─▄█▀██─█▄█─███─▄█▀█▄▄▄▄─█
+                ▀▀▄▄▄▀▀▄▀▄▀▄▄▄▄▄▀▄▄▄▀▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀
+''')],
         [sg.T(theme_dir)],
         [sg.T('Current theme:'), sg.T(actv_theme)],
         [sg.T('Current Color:'), sg.T(actv_color)],
@@ -81,13 +111,26 @@ def Themes():
             window.hide()
             main()
         if event == sg.WIN_CLOSED:
+            subprocess.getoutput('RMDIR /Q/S TEMP')
             sys.exit()
     window.close()
 
 #Extensions Window
 def Extensions():
+    f = open(r'src\ext_dir.txt')
+    ext_dir = f.read()
     layout = [
-        [sg.T('Extensions:')],
+        [sg.T('''
+           ███████████████████████████████████████████████████
+           █─▄▄▄▄█▄─▄▄─█▄─▄█─▄▄▄─█▄─▄▄─█─▄─▄─█▄─▄█▄─▄▄─█▄─█─▄█
+           █▄▄▄▄─██─▄▄▄██─██─███▀██─▄█▀███─████─███─▄████▄─▄██
+           ▀▄▄▄▄▄▀▄▄▄▀▀▀▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▀▄▄▄▀▀▄▄▄▀▄▄▄▀▀▀▀▄▄▄▀▀
+
+██████████████████████████████████████████████████████████████
+█▄─▄▄─█▄─▀─▄█─▄─▄─█▄─▄▄─█▄─▀█▄─▄█─▄▄▄▄█▄─▄█─▄▄─█▄─▀█▄─▄█─▄▄▄▄█
+██─▄█▀██▀─▀████─████─▄█▀██─█▄▀─██▄▄▄▄─██─██─██─██─█▄▀─██▄▄▄▄─█
+▀▄▄▄▄▄▀▄▄█▄▄▀▀▄▄▄▀▀▄▄▄▄▄▀▄▄▄▀▀▄▄▀▄▄▄▄▄▀▄▄▄▀▄▄▄▄▀▄▄▄▀▀▄▄▀▄▄▄▄▄▀
+''')],
         [sg.T(ext_dir)],
         [sg.T('Active Extensions:'), sg.T(actv_ext)],
         [sg.T('Extension Name:'), sg.In(key='ext')],
@@ -128,8 +171,19 @@ def Extensions():
 
 #Apps Window
 def Apps():
+    f = open(r'src\apps_dir.txt')
+    apps_dir = f.read()
     layout = [
-        [sg.T('Apps:')],
+        [sg.T('''
+███████████████████████████████████████████████████
+█─▄▄▄▄█▄─▄▄─█▄─▄█─▄▄▄─█▄─▄▄─█─▄─▄─█▄─▄█▄─▄▄─█▄─█─▄█
+█▄▄▄▄─██─▄▄▄██─██─███▀██─▄█▀███─████─███─▄████▄─▄██
+▀▄▄▄▄▄▀▄▄▄▀▀▀▄▄▄▀▄▄▄▄▄▀▄▄▄▄▄▀▀▄▄▄▀▀▄▄▄▀▄▄▄▀▀▀▀▄▄▄▀▀
+                                █████████████████████████
+                                ██▀▄─██▄─▄▄─█▄─▄▄─█─▄▄▄▄█
+                                ██─▀─███─▄▄▄██─▄▄▄█▄▄▄▄─█
+                                ▀▄▄▀▄▄▀▄▄▄▀▀▀▄▄▄▀▀▀▄▄▄▄▄▀
+''')],
         [sg.T(apps_dir)],
         [sg.T('Active Apps'), sg.T(actv_apps)],
         [sg.T('App Name'), sg.In(key='app_name')],
@@ -178,7 +232,7 @@ def main():
         [sg.Multiline(config, size=(90, 10))],
         [sg.B('Apps'), sg.B('Themes'), sg.B('Extensions'), sg.B('Apply'), sg.B('Backup'), sg.B('Restore'), sg.Button('Install CLI'), sg.B('Install Spotify'), sg.B('Exit')],
         [sg.T('Console Input:'), sg.In(key='_IN_', size=(61)),sg.B('Send Command')],
-        [sg.Output(size=(90,5))],
+        [sg.Output(size=(90,6))]
     ]
     window = sg.Window('Spicetify', 
                         layout, 
@@ -228,6 +282,7 @@ def main():
             sg.popup('Spotify Installed',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Exit':
+            shutil. rmtree('TEPM')
             sys.exit()
         if event == 'Send Command':
             runCommand(cmd=values['_IN_'], window=window)
