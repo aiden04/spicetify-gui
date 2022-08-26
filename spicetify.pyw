@@ -111,7 +111,6 @@ def Themes():
             window.hide()
             main()
         if event == sg.WIN_CLOSED:
-            subprocess.getoutput('RMDIR /Q/S TEMP')
             sys.exit()
     window.close()
 
@@ -282,7 +281,6 @@ def main():
             sg.popup('Spotify Installed',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Exit':
-            shutil. rmtree('TEPM')
             sys.exit()
         if event == 'Send Command':
             runCommand(cmd=values['_IN_'], window=window)
