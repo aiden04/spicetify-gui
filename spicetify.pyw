@@ -11,15 +11,15 @@ sg.theme('SystemDefaultForReal')
 ttk_style = 'clam'
 
 #Local Variables
-user = subprocess.getoutput('echo %username%')
-theme_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\local\spicetify\Themes'.format(user))
-ext_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\Extensions'.format(user))
-apps_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\CustomApps'.format(user))
+user = subprocess.getoutput('echo %username%') #Defines the users directory name
+theme_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\local\spicetify\Themes'.format(user)) #Defines the Spicetify Themes directory
+ext_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\Extensions'.format(user)) #Defines the Spicetify Extensions directory
+apps_dir = subprocess.getoutput(r'dir C:\Users\{}\AppData\Local\spicetify\CustomApps'.format(user)) #Defines the Spicetify Apps directory
 
-actv_ext = subprocess.getoutput('spicetify config extensions')
-actv_apps = subprocess.getoutput('spicetify config custom_apps')
-actv_theme = subprocess.getoutput('spicetify config current_theme')
-actv_color = subprocess.getoutput('spicetify config color_scheme')
+actv_ext = subprocess.getoutput('spicetify config extensions') #Defines a list of active Extensions 
+actv_apps = subprocess.getoutput('spicetify config custom_apps') #Defines a list of active Apps
+actv_theme = subprocess.getoutput('spicetify config current_theme') #Defines the current Theme
+actv_color = subprocess.getoutput('spicetify config color_scheme') #Defines the current Color Scheme
 
 #Run console commands
 def runCommand(cmd, timeout=None, window=None):
