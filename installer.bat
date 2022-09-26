@@ -142,7 +142,7 @@ echo.
 echo %ESC%[94m [-] Installing CLI%ESC%[0m
 echo.
 powershell -ExecutionPolicy Bypass -File "src/install.ps1"
-timeout /t 4
+timeout /t 4 > null
 echo.
 echo %ESC%[94m [-] Installing Marketplace[0m
 echo.
@@ -162,13 +162,13 @@ cls
 echo.
 echo %ESC%[32m#####################################%ESC%[0m
 echo.
-echo %ESC%[32m [+]Installation Completed!%ESC%[0m
+echo %ESC%[32m [+] Installation Completed!%ESC%[0m
 echo.
 echo %ESC%[32m#####################################%ESC%[0m
 echo.
 echo %ESC%[32m [-]Installation has completed%ESC%[0m
 echo.
-echo %ESC%[32mPress any key to exit. . .
+echo %ESC%[32m [-] Press any key to exit. . .
 pause > null
 
 
