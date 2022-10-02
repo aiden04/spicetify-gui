@@ -41,7 +41,10 @@ with open(r"src\apps_dir.txt", 'r+') as fp:
 
 #Run console commands
 def runCommand(cmd, timeout=None, window=None):
-    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+    p = subprocess.Popen(cmd, 
+                         shell=True, 
+                         stdout=subprocess.PIPE, 
+                         stderr=subprocess.STDOUT)
     output = ''
     for line in p.stdout:
         line = line.decode(errors='replace' if (sys.version_info) < (3, 5) else 'backslashreplace').rstrip()
@@ -228,10 +231,10 @@ def main():
     layout = [
         [sg.Im('src/spicetify-full.png')],
         [sg.T('Spicetify Config File:')],
-        [sg.Multiline(config, size=(90, 10))],
-        [sg.B('Apps'), sg.B('Themes'), sg.B('Extensions'), sg.B('Apply'), sg.B('Backup'), sg.B('Restore'), sg.Button('Install CLI'), sg.B('Install Spotify'), sg.B('Exit')],
-        [sg.T('Console Input:'), sg.In(key='_IN_', size=(61)),sg.B('Send Command')],
-        [sg.Output(size=(90,6))]
+        [sg.Multiline(config, size=(85, 10))],
+        [sg.B('Apps', size=(6)), sg.B('Themes', size=(7)), sg.B('Extensions'), sg.B('Apply', size=(7)), sg.B('Backup', size=(7)), sg.B('Restore', size=(7)), sg.Button('Update CLI'), sg.B('Exit', size=(7))],
+        [sg.T('Console Input:'), sg.In(key='_IN_', size=(56)),sg.B('Send Command')],
+        [sg.Output(size=(85,6))]
     ]
     window = sg.Window('Spicetify', 
                         layout, 
@@ -266,24 +269,19 @@ def main():
             print(restore)
             sg.popup('Spotify Restored!',
                      icon=r'src\spicetify-logo.ico')
-        if event == 'Install CLI':
+        if event == 'Update CLI':
             install = subprocess.getoutput('cmd /c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "src/install.ps1"')
             market = subprocess.getoutput('cmd /c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "src/market-install.ps1"')
             print(install)
             print(market)
-            print('Spicetify Installed')
-            sg.popup('Spicetify has been installed!',
-                     icon=r'src\spicetify-logo.ico')
-        if event == 'Install Spotify':
-            spotify_install = subprocess.getoutput('cmd /c start /min "" powershell -WindowStyle Hidden -ExecutionPolicy Bypass -File "src\Spotify.ps1"')
-            print(spotify_install)
-            print('Spotify Installed')
-            sg.popup('Spotify Installed',
+            print('Spicetify Updated')
+            sg.popup('Spicetify has been updated!',
                      icon=r'src\spicetify-logo.ico')
         if event == 'Exit':
             sys.exit()
         if event == 'Send Command':
-            runCommand(cmd=values['_IN_'], window=window)
+            runCommand(cmd=values['_IN_'],
+            window=window)
         if event == sg.WIN_CLOSED:
             sys.exit()
     window.close()
