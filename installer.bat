@@ -119,9 +119,15 @@ echo %ESC%[94m [-] RMDIR /Q/S spicetify-gui%ESC%[0m
 RMDIR /Q/S spicetify-gui
 timeout /t 1 >null
 echo %ESC%[94m [-] del /f Spicetify-GUI.spec%ESC%[0m
-timeout /t 3 >null
-echo.
 del /f Spicetify-GUI.spec
+timeout /t 3 >null
+echo %ESC%[94m [-] del /f spicetify.pyw%ESC%[0m
+del /f spicetify.pyw
+timeout /t 3 >null
+echo  %ESC%[94m [-] del /f requirements.txt%ESC%[0m
+del /f requirements.txt
+timeout /t 2 >null
+echo.
 echo %ESC%[32m#####################################%ESC%
 echo.
 echo %ESC%[32m [+] Directory cleaned up!%ESC%[0m
@@ -170,6 +176,7 @@ echo %ESC%[32m [-]Installation has completed%ESC%[0m
 echo.
 echo %ESC%[32m [-] Press any key to exit. . .
 pause > null
+del /f null
 
 
 
