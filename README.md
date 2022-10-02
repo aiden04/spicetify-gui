@@ -71,7 +71,7 @@ Spicetify offers many features like oneclick easyinstall for <a href="https://sp
 <h1 align="center">Media</h1>
 
 <h3 align="center">Main Menu</h3>
-<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/186846306-fdc1278b-f65f-4074-ac38-52cae2a19afa.png"></h3>
+<h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/193435984-13fb9c5c-293a-451d-a137-dc7592ddca98.png"></h3>
 
 <h3 align ="center">Apps</h3>
 <h3 align="center"><img src="https://user-images.githubusercontent.com/9298623/186846373-7978dbdc-c2a0-4762-8030-2da2da0c8ecb.png"></h3>
