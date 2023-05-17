@@ -1,3 +1,5 @@
+<H1 align="center">Development has ended, Spicetify-GUI will no longer recieve updates. Updates to spicetify-cli may leave this project broken and unable to install spicetify!</h1>
+
 <h3 align="center"><a href="https://spicetify.app/"><img src="https://user-images.githubusercontent.com/9298623/185500058-09a6bbc4-1326-4d17-96e8-1eb4e6fe1337.png" width="600px"></a></h3>
 
 <h1 align="center">Spicetify GUI</h1>
